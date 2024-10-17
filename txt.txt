@@ -1,0 +1,14 @@
+// Get the contract instance
+const EscrowWithTimeout = await ethers.getContractFactory("EscrowWithTimeout");
+const escrow = await EscrowWithTimeout.attach(
+  "0x5855B75426E2BF5DF5E4Dc0AB6bbEe8c94251538"
+);
+
+// Example: Check initial state
+await escrow.state();
+
+// Example: Buyer deposits funds into escrow
+await escrow.deposit({ value: ethers.utils.parseEther("1.0") });
+
+// Example: Confirm delivery
+await escrow.confirmDelivery();
